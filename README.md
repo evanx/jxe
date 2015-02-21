@@ -4,6 +4,8 @@ Node Element class for rendering HTML
 
 ### example 
 
+The following illustrates server-side rendering of a newsletter using Node.
+
 ```javascript
 
 function Letter(letterInfo) {
@@ -104,11 +106,9 @@ Letter.prototype.buildDocument = function () {
    this.body = this.html.body();
    this.containerTable = this.body.table(tableAttrs100(
            {style: "font-family:Arial,sans-serif;color:#333;"}));
-   var style = 'max-width:728px';
-   if (this.deviceType === 'mobile') {
-   }
    this.bodyTable = this.containerTable.tr().td({align: "center"}).table(
-           tableAttrs0({cellspacing: 10, style: 'font-family:Arial,sans-serif;' + style}));
+           tableAttrs0({cellspacing: 10, 
+           style: 'font-family:Arial,sans-serif;max-width:728px'}));
    this.header0(this.bodyTable.tr().td({bgcolor: "#ebeff1"}));
    if (this.featureItem) {
       this.feature(this.bodyTable.tr().td());
