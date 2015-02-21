@@ -31,7 +31,7 @@ Letter.prototype.feature = function (parent) {
    this.tr0 = this.table.tr();
    var featureLink = this.processArticleLink(this.featureItem.link);
    this.td = this.tr0.td({width: '309', valign: 'top', bgcolor: '#000',
-   style: 'max-width:50%'});
+      style: 'max-width:50%'});
    this.table = this.td.table({cellpadding: 20});
    this.tr = this.table.tr({});
    this.td = this.tr.td({});
