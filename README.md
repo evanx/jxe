@@ -2,7 +2,7 @@
 
 Minimal `Element` class for rendering HTML in JavaScript
 
-### example 
+### Example 
 
 See https://github.com/evanx/jxe/blob/master/test/example.js
 
