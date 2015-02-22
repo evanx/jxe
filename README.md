@@ -27,49 +27,51 @@ var featureStyle = {
 };
 
 Letter.prototype.feature = function (parent) {
-   this.table = parent.table({style: featureStyle.table});
-   this.tr0 = this.table.tr();
-   var featureLink = this.processArticleLink(this.featureItem.link);
-   this.td = this.tr0.td({width: '309', valign: 'top', bgcolor: '#000',
+   var elements = {};
+   elements.table = parent.table({style: featureStyle.table});
+   elements.tr0 = elements.table.tr();
+   var featureLink = elements.processArticleLink(elements.featureItem.link);
+   elements.td = elements.tr0.td({width: '309', valign: 'top', bgcolor: '#000',
       style: 'max-width:50%'});
-   this.table = this.td.table({cellpadding: 20});
-   this.tr = this.table.tr({});
-   this.td = this.tr.td({});
-   this.td.h1({style: featureStyle.h1}, this.featureItem.title);
-   this.td.p({style: featureStyle.description}, this.featureItem.description);
-   this.td.a({href: featureLink,
+   elements.table = elements.td.table({cellpadding: 20});
+   elements.tr = elements.table.tr({});
+   elements.td = elements.tr.td({});
+   elements.td.h1({style: featureStyle.h1}, elements.featureItem.title);
+   elements.td.p({style: featureStyle.description}, elements.featureItem.description);
+   elements.td.a({href: featureLink,
       style: featureStyle.featureLink}, 'Full story');
-   this.td = this.tr0.td();
-   this.td.img({src: this.featureItem.image,
+   elements.td = elements.tr0.td();
+   elements.td.img({src: elements.featureItem.image,
       width: '420', height: '240',
       style: featureStyle.featureImage});
-   return this.table;
+   return elements.table;
 };
 
 ...
 
 Letter.prototype.buildDocument = function () {
-   this.html = new Element().html();
-   this.head = this.html.head();
-   this.head.title(this.letterInfo.title);
-   this.head.meta({'http-equiv': 'X-UA-Compatible', content: 'IE=edge'})
-   this.head.meta({name: 'viewport', 
+   var elements = {};
+   elements.html = new Element().html();
+   elements.head = elements.html.head();
+   elements.head.title(elements.letterInfo.title);
+   elements.head.meta({'http-equiv': 'X-UA-Compatible', content: 'IE=edge'})
+   elements.head.meta({name: 'viewport', 
       content: 'width=device-width, initial-scale=1, maximum-scale=1'});
-   this.body = this.html.body();
-   this.containerTable = this.body.table(
+   elements.body = elements.html.body();
+   elements.containerTable = elements.body.table(
            {style: 'font-family:Arial,sans-serif;color:#333'});
-   this.bodyTable = this.containerTable.tr().td({align: 'center'}).table(
+   elements.bodyTable = elements.containerTable.tr().td({align: 'center'}).table(
            {cellspacing: 10, 
            style: 'font-family:Arial,sans-serif;max-width:728px'});
-   this.header(this.bodyTable.tr().td({bgcolor: '#ebeff1'}));
-   this.feature(this.bodyTable.tr().td());
-   this.letterInfo.sections.forEach(function (section, index) {
+   elements.header(elements.bodyTable.tr().td({bgcolor: '#ebeff1'}));
+   elements.feature(elements.bodyTable.tr().td());
+   elements.letterInfo.sections.forEach(function (section, index) {
       if (th.data[section.category].length > 1) {
          th.section(th.bodyTable, section, index);
       }
    });
-   this.footer(this.bodyTable.tr().td());
-   return this.html.render();
+   elements.footer(elements.bodyTable.tr().td());
+   return elements.html.render();
 };
 
 ```
