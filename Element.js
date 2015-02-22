@@ -169,13 +169,27 @@ function isSingleton(name) {
    return name === 'img' || name === 'br' || name === 'hr';
 }
 
+function renderStyle(styleObject) {
+   var styleString = '';
+   for (var prop in styleObject) {
+      if (styleString.length) {
+         styleString += ';';
+      }
+      styleString += prop + ':' + styleObject[prop];
+   }
+   return styleString;
+}
+
 function renderAttribs(attribs) {
    var string = '';
-   for (prop in attribs) {
+   for (var prop in attribs) {
       var value = attribs[prop];
+      if (prop === 'style' && typeof value === 'object') {
+         value = renderStyle(value);
+      }
       string += ' ' + prop + '="' + value + '"';
    }
-   log('renderAttribs', string);
+   console.log('renderAttribs', string);
    return string;
 }
 
