@@ -1,7 +1,7 @@
 
 var Element = require('../Element');
 
-function constructLetter(spec) {
+function constructLetter(content) {
    var that = {};
    var style = {
       table: {
@@ -20,9 +20,9 @@ function constructLetter(spec) {
       var html = new Element().html();
       html.head();
       html.body();
-      html.elements.head.title(spec.title);
-      html.elements.body.h1({style: style.h1}, spec.title);
-      spec.sections.forEach(function (section) {
+      html.elements.head.title(content.title);
+      html.elements.body.h1({style: style.h1}, content.title);
+      content.sections.forEach(function (section) {
          html.elements.body.h2({style: style.h2}, section.title);
          var div = html.elements.body.div();
          section.items.forEach(function (item) {
