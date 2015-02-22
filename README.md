@@ -1,6 +1,6 @@
 ## jxe
 
-Node Element class for rendering HTML
+Minimal `Element` class for rendering HTML in JavaScript
 
 ### example 
 
