@@ -7,7 +7,7 @@ Node Element class for rendering HTML
 See https://github.com/evanx/jxe/blob/master/test/example.js
 
 ```javascript
-   function buildHtmlElement(spec) {
+   function buildHtmlElement(spec, style) {
       var html = new Element().html();
       html.head();
       html.body();
