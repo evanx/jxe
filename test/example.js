@@ -16,7 +16,7 @@ function constructLetter(letterSpec) {
          'font-size': '14px',
       }
    };
-   function buildHtmlDocument(   ) {
+   function buildHtmlElement() {
       var html = new Element().html();
       html.head();
       html.body();
@@ -26,14 +26,13 @@ function constructLetter(letterSpec) {
          html.elements.body.h2({style: style.h2}, section.title);
          var div = html.elements.body.div();
          section.items.forEach(function (item) {
-            div.h3({style: 'font-size: 12pt'}, item.title);
-            div.p({style: 'font-size: 11pt'}, item.description);
+            div.h3({style: 'font-size:12pt'}, item.title);
+            div.p({style: 'font-size:11pt'}, item.description);
          });
       });
-      console.log('json:\n', JSON.stringify(html.transform(), null, 2));
-      return html.render();
+      return html;
    }
-   that.buildHtmlDocument = buildHtmlDocument;
+   that.buildHtmlElement = buildHtmlElement;
    return that;
 }
 
@@ -70,8 +69,9 @@ function test() {
          }
       ]
    };
-   var html = constructLetter(letterSpec).buildHtmlDocument();
+   var htmlElement = constructLetter(letterSpec).buildHtmlElement();
+   console.log('json:\n', JSON.stringify(htmlElement.transform(), null, 2));
+   console.log('html:\n', htmlElement.render());
 }
-
 
 test();

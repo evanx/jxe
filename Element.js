@@ -189,7 +189,7 @@ function renderAttribs(attribs) {
       }
       string += ' ' + prop + '="' + value + '"';
    }
-   console.log('renderAttribs', string);
+   log('renderAttribs', string);
    return string;
 }
 
