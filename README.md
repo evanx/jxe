@@ -1,6 +1,6 @@
 ## jxe
 
-Minimal `Element` class for rendering HTML in JavaScript
+Minimal `Element` class for rendering HTML in JavaScript.
 
 ### Example 
 
@@ -23,4 +23,11 @@ See https://github.com/evanx/jxe/blob/master/test/example.js
       });
       return html;
    }
+```
+
+### Technical details
+
+```shell
+evans@boromir:~/jxe$ grep ';' Element.js | wc -l
+83
 ```
