@@ -36,7 +36,6 @@ function constructLetter(content) {
    return that;
 }
 
-
 function test() {
    var letterSpec = {
       title: 'Lifestyle Newsletter',
